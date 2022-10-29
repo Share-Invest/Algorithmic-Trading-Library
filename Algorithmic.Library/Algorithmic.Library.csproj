@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <AssemblyName>Modules</AssemblyName>
+    <RootNamespace>ShareInvest</RootNamespace>
+    <Authors>cyberprophet</Authors>
+    <Company>ShareInvest</Company>
+    <Product>Algorithmic Trading</Product>
+    <Copyright>Copyright ⓒ 2022, ShareInvest Corp.</Copyright>
+  </PropertyGroup>
+
+</Project>
