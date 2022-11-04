@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ShareInvest.Models
-{
-    public class Message
-    {
+namespace ShareInvest.Models;
 
-    }
+public class Message
+{
+
 }
