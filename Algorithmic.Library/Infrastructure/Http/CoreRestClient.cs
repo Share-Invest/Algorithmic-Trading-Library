@@ -1,8 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using RestSharp;
 
-using RestSharp;
-
-using ShareInvest.Models.OpenAPI.Response;
 using ShareInvest.Properties;
 
 using System.Diagnostics;
@@ -16,18 +13,7 @@ public class CoreRestClient : RestClient, ICoreClient
     {
         var request = new RestRequest($"{Resources.API}/{route}", Method.POST);
 
-        object? ctor = param;
-
-        if (param is string json)
-            ctor = route switch
-            {
-                nameof(OPTKWFID) => JsonConvert.DeserializeObject<OPTKWFID>(json),
-                _ => null
-            };
-        if (ctor is null)
-            return;
-
-        request.AddJsonBody(ctor);
+        request.AddJsonBody(param);
 
         var res = await ExecuteAsync(request, cancellationTokenSource.Token);
 
