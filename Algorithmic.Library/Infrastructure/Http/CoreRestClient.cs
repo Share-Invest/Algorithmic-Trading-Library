@@ -1,5 +1,6 @@
 ﻿using RestSharp;
 
+using ShareInvest.Identifies;
 using ShareInvest.Properties;
 
 using System.Diagnostics;
@@ -11,7 +12,9 @@ public class CoreRestClient : RestClient, ICoreClient
 {
     public async Task PostAsync<T>(string route, T param) where T : class
     {
-        var request = new RestRequest($"{Resources.API}/{route}", Method.POST);
+        var transformer = ParameterTransformer.TransformOutbound(route);
+
+        var request = new RestRequest($"{Resources.API}/{transformer}", Method.POST);
 
         request.AddJsonBody(param);
 

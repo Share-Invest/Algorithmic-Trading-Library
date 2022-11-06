@@ -1,8 +1,9 @@
 ﻿using Newtonsoft.Json;
 
+using ShareInvest.Models.OpenAPI;
 using ShareInvest.Models.OpenAPI.Response;
 
-namespace ShareInvest.Models.OpenAPI.Observe;
+namespace ShareInvest.Observers;
 
 public class JsonMessageEventArgs : MessageEventArgs
 {
@@ -10,12 +11,15 @@ public class JsonMessageEventArgs : MessageEventArgs
     {
         get;
     }
-    public JsonMessageEventArgs(TR? tr, string json) =>
-
+    public JsonMessageEventArgs(TR? tr, string json)
+    {
         Convey = tr switch
         {
-            Request.OPTKWFID => JsonConvert.DeserializeObject<OPTKWFID>(json),
+            Models.OpenAPI.Request.OPTKWFID =>
+
+                JsonConvert.DeserializeObject<OPTKWFID>(json),
 
             _ => throw new ArgumentNullException(json)
         };
+    }
 }

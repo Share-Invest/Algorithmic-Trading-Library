@@ -1,4 +1,6 @@
-﻿using System.Diagnostics;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Diagnostics;
 using System.Net.NetworkInformation;
 using System.Runtime.Versioning;
 using System.Security.Principal;
@@ -7,7 +9,7 @@ namespace ShareInvest;
 
 public static class Status
 {
-    public static string Address => IsDebugging ? "http://localhost:12988" : Properties.Resources.URL;
+    public static string Address => IsDebugging ? "https://localhost:44318" : Properties.Resources.URL;
 
     [SupportedOSPlatform("windows8.0")]
     public static bool IsAdministrator
@@ -28,7 +30,7 @@ public static class Status
     {
         get; set;
     }
-    public static string GetId(string[] chaos)
+    public static string GetKey(string[] chaos)
     {
         var physical = string.Empty;
 
@@ -56,6 +58,12 @@ public static class Status
 
         Debug.WriteLine(nameof(SetDebug));
     }
+    public static Type[] Types => new[]
+    {
+         typeof(KeyAttribute),
+
+         typeof(NotMappedAttribute)
+    };
     public static Dictionary<int, string> Error => new()
     {
         {
