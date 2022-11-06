@@ -1,6 +1,6 @@
-﻿namespace ShareInvest.Models.OpenAPI.Observe;
+﻿namespace ShareInvest.Observers.OpenAPI;
 
-public class AxMessageEventArgs : EventArgs
+public class AxMessageEventArgs : MessageEventArgs
 {
     public string? Title
     {
