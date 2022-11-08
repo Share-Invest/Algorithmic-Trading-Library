@@ -6,4 +6,8 @@ public abstract class User
     {
         get; set;
     }
+    public abstract string? AccNo
+    {
+        get; set;
+    }
 }

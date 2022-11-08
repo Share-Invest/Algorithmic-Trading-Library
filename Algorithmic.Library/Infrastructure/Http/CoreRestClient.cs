@@ -14,7 +14,7 @@ public class CoreRestClient : RestClient, ICoreClient
     {
         var transformer = ParameterTransformer.TransformOutbound(route);
 
-        var request = new RestRequest($"{Resources.API}/{transformer}", Method.POST);
+        var request = new RestRequest($"{Resources.KIWOOM}/{transformer}", Method.POST);
 
         request.AddJsonBody(param);
 

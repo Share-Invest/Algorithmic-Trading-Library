@@ -117,8 +117,11 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="API" xml:space="preserve">
-    <value>core</value>
+  <data name="CODE" xml:space="preserve">
+    <value>종목코드</value>
+  </data>
+  <data name="KIWOOM" xml:space="preserve">
+    <value>open-api</value>
   </data>
   <data name="MEDIATYPE" xml:space="preserve">
     <value>application/json</value>
