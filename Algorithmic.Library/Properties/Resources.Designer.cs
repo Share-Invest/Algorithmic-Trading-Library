@@ -61,11 +61,20 @@ namespace ShareInvest.Properties {
         }
         
         /// <summary>
-        ///   core과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   종목코드과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
-        internal static string API {
+        internal static string CODE {
             get {
-                return ResourceManager.GetString("API", resourceCulture);
+                return ResourceManager.GetString("CODE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   open-api과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string KIWOOM {
+            get {
+                return ResourceManager.GetString("KIWOOM", resourceCulture);
             }
         }
         

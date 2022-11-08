@@ -5,6 +5,11 @@ namespace ShareInvest.Models.OpenAPI;
 
 public class KiwoomUser : User
 {
+    [StringLength(0x10), Key]
+    public override string? AccNo
+    {
+        get; set;
+    }
     [Key]
     public override string? Key
     {

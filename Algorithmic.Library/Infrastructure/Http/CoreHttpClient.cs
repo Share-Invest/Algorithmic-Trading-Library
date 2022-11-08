@@ -10,7 +10,7 @@ public class CoreHttpClient : HttpClient, ICoreClient
 {
     public async Task PostAsync<T>(string route, T param) where T : class
     {
-        var url = string.Concat(Resources.URL, Resources.API, route);
+        var url = string.Concat(Resources.URL, Resources.KIWOOM, route);
 
         using (var res = await this.PostAsJsonAsync(url, param, cts.Token))
 

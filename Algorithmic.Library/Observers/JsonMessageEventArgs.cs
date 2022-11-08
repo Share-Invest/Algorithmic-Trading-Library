@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 
+using ShareInvest.Identifies;
 using ShareInvest.Models.OpenAPI;
 using ShareInvest.Models.OpenAPI.Response;
 
@@ -15,6 +16,10 @@ public class JsonMessageEventArgs : MessageEventArgs
     {
         Convey = tr switch
         {
+            Models.OpenAPI.Request.OPW00004 =>
+
+                ParameterTransformer.DeserializeObject(json),
+
             Models.OpenAPI.Request.OPTKWFID =>
 
                 JsonConvert.DeserializeObject<OPTKWFID>(json),
