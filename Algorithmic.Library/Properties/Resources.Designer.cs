@@ -70,6 +70,15 @@ namespace ShareInvest.Properties {
         }
         
         /// <summary>
+        ///   종목번호과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string CODENUMBER {
+            get {
+                return ResourceManager.GetString("CODENUMBER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   open-api과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string KIWOOM {

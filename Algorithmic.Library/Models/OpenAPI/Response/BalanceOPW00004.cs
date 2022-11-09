@@ -6,7 +6,7 @@ using System.Runtime.Serialization;
 
 namespace ShareInvest.Models.OpenAPI.Response;
 
-public class Balance : OPW00004
+public class BalanceOPW00004 : AccountBook
 {
     [StringLength(0x10), DataMember, JsonProperty("계좌번호"), Key]
     public override string? AccNo
@@ -23,7 +23,7 @@ public class Balance : OPW00004
     {
         get; set;
     }
-    [DataMember, JsonProperty("종목코드"), StringLength(8)]
+    [DataMember, JsonProperty("종목코드"), StringLength(8), Key]
     public string Code
     {
         get => code ?? string.Empty;
