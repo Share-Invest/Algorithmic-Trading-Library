@@ -8,18 +8,22 @@ namespace ShareInvest.Infrastructure.Http;
 
 public class CoreHttpClient : HttpClient, ICoreClient
 {
-    public async Task PostAsync<T>(string route, T param) where T : class
+    public async Task<object> PostAsync<T>(string route, T param) where T : class
     {
         var url = string.Concat(Resources.URL, Resources.KIWOOM, route);
 
         using (var res = await this.PostAsJsonAsync(url, param, cts.Token))
-
+        {
             if (HttpStatusCode.OK != res.StatusCode)
             {
 #if DEBUG
                 Debug.WriteLine(res.StatusCode);
 #endif
             }
+            else
+                return res.Content;
+        }
+        return string.Empty;
     }
     readonly CancellationTokenSource cts = new();
 }
