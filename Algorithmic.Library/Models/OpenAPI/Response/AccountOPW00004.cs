@@ -6,7 +6,7 @@ using System.Runtime.Serialization;
 
 namespace ShareInvest.Models.OpenAPI.Response;
 
-public class Account : OPW00004
+public class AccountOPW00004 : AccountBook
 {
     [StringLength(0x10), DataMember, JsonProperty("계좌번호"), Key]
     public override string? AccNo

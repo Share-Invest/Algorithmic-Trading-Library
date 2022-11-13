@@ -6,9 +6,13 @@ namespace ShareInvest
     {
         public static Delay Instance => Request ??= new Delay();
 
-        public static int Milliseconds
+        public int Milliseconds
         {
             private get; set;
+        }
+        public int Count
+        {
+            get => task.Count;
         }
         public void Run()
         {

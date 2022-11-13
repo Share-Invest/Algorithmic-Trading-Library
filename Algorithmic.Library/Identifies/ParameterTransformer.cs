@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
+using ShareInvest.Models;
 using ShareInvest.Models.OpenAPI.Response;
 using ShareInvest.Properties;
 
@@ -18,14 +19,24 @@ public static class ParameterTransformer
                              RegexOptions.CultureInvariant,
                              TimeSpan.FromMilliseconds(0x64)).ToLowerInvariant();
     }
-    public static object? DeserializeObject(string json)
+    public static AccountBook? DeserializeOPW00004(string json)
     {
         var jEnumerable = JObject.Parse(json).AsJEnumerable();
 
         if (jEnumerable.Any(o => Resources.CODE.Equals(o.Path)))
         {
-            return JsonConvert.DeserializeObject<Balance>(json);
+            return JsonConvert.DeserializeObject<BalanceOPW00004>(json);
         }
-        return JsonConvert.DeserializeObject<Account>(json);
+        return JsonConvert.DeserializeObject<AccountOPW00004>(json);
+    }
+    public static AccountBook? DeserializeOPW00005(string json)
+    {
+        var jEnumerable = JObject.Parse(json).AsJEnumerable();
+
+        if (jEnumerable.Any(o => Resources.CODENUMBER.Equals(o.Path)))
+        {
+            return JsonConvert.DeserializeObject<BalanceOPW00005>(json);
+        }
+        return JsonConvert.DeserializeObject<AccountOPW00005>(json);
     }
 }

@@ -120,6 +120,9 @@
   <data name="CODE" xml:space="preserve">
     <value>종목코드</value>
   </data>
+  <data name="CODENUMBER" xml:space="preserve">
+    <value>종목번호</value>
+  </data>
   <data name="KIWOOM" xml:space="preserve">
     <value>open-api</value>
   </data>

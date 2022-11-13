@@ -1,6 +1,6 @@
-﻿namespace ShareInvest.Models.OpenAPI.Response;
+﻿namespace ShareInvest.Models;
 
-public abstract class OPW00004
+public abstract class AccountBook
 {
     public abstract string? AccNo
     {

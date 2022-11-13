@@ -10,7 +10,7 @@ namespace ShareInvest.Infrastructure.Http;
 
 public class CoreRestClient : RestClient, ICoreClient
 {
-    public async Task PostAsync<T>(string route, T param) where T : class
+    public async Task<object> PostAsync<T>(string route, T param) where T : class
     {
         var transformer = ParameterTransformer.TransformOutbound(route);
 
@@ -22,6 +22,8 @@ public class CoreRestClient : RestClient, ICoreClient
 
         if (HttpStatusCode.OK != res.StatusCode)
             Debug.WriteLine(res.StatusCode);
+
+        return res.Content;
     }
     public CoreRestClient() : base(Resources.URL)
     {
