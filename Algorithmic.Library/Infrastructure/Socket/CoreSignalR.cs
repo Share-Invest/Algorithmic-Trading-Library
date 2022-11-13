@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.SignalR.Client;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
 using ShareInvest.Observers;
@@ -19,10 +18,6 @@ public class CoreSignalR : ISocketClient<MessageEventArgs>
     {
         hub = new HubConnectionBuilder()
 
-            .AddJsonProtocol(o =>
-            {
-
-            })
             .WithUrl(url, o =>
             {
                 o.AccessTokenProvider = async () =>
