@@ -132,6 +132,9 @@
   <data name="MOCK" xml:space="preserve">
     <value>http://1.223.167.123:5191</value>
   </data>
+  <data name="SW" xml:space="preserve">
+    <value>Software</value>
+  </data>
   <data name="URL" xml:space="preserve">
     <value>https://coreapi.shareinvest.net</value>
   </data>
