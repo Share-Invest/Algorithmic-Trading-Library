@@ -97,6 +97,24 @@ namespace ShareInvest.Properties {
         }
         
         /// <summary>
+        ///   http://1.223.167.123:5191과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string MOCK {
+            get {
+                return ResourceManager.GetString("MOCK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Software과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string SW {
+            get {
+                return ResourceManager.GetString("SW", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   https://coreapi.shareinvest.net과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string URL {

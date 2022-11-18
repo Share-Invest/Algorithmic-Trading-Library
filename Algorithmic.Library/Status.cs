@@ -9,7 +9,7 @@ namespace ShareInvest;
 
 public static class Status
 {
-    public static string Address => IsDebugging ? "https://localhost:44318" : Properties.Resources.URL;
+    public static string Address => IsDebugging ? "https://localhost:44318" : Properties.Resources.MOCK;
 
     [SupportedOSPlatform("windows8.0")]
     public static bool IsAdministrator
