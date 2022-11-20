@@ -1,4 +1,5 @@
-﻿using ShareInvest.Properties;
+﻿using ShareInvest.Identifies;
+using ShareInvest.Properties;
 
 using System.Diagnostics;
 using System.Net;
@@ -24,6 +25,32 @@ public class CoreHttpClient : HttpClient, ICoreClient
                 return res.Content;
         }
         return string.Empty;
+    }
+    public Task<T?> TryGetAsync<T>(string param)
+    {
+        string path = string.Concat(Resources.KIWOOM,
+                                    '/',
+                                    ParameterTransformer.TransformOutbound(param));
+        if (FirstRendering)
+        {
+            FirstRendering = false;
+
+            return Task.Run(() => TryGetImplementationAsync<T>(path));
+        }
+        return TryGetImplementationAsync<T>(path);
+    }
+    public CoreHttpClient(string url)
+    {
+        FirstRendering = true;
+        BaseAddress = new Uri(url);
+    }
+    async Task<T?> TryGetImplementationAsync<T>(string path)
+    {
+        return await this.GetFromJsonAsync<T>(path);
+    }
+    bool FirstRendering
+    {
+        get; set;
     }
     readonly CancellationTokenSource cts = new();
 }

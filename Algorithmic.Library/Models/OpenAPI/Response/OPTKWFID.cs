@@ -5,10 +5,10 @@ using System.Runtime.Serialization;
 
 namespace ShareInvest.Models.OpenAPI.Response;
 
-public class OPTKWFID
+public class OPTKWFID : Stock
 {
     [StringLength(0x40)]
-    public string? State
+    public override string? State
     {
         get; set;
     }
@@ -28,17 +28,17 @@ public class OPTKWFID
         get; set;
     }
     [DataMember, JsonProperty("종목코드"), Key, StringLength(6)]
-    public string? Code
+    public override string? Code
     {
         get; set;
     }
     [DataMember, JsonProperty("종목명"), StringLength(0x40)]
-    public string? Name
+    public override string? Name
     {
         get; set;
     }
     [DataMember, JsonProperty("현재가"), StringLength(0x10)]
-    public string? Current
+    public override string? Current
     {
         get; set;
     }
@@ -48,27 +48,27 @@ public class OPTKWFID
         get; set;
     }
     [DataMember, JsonProperty("전일대비"), StringLength(0x10)]
-    public string? CompareToPreviousDay
+    public override string? CompareToPreviousDay
     {
         get; set;
     }
     [DataMember, JsonProperty("전일대비기호"), StringLength(0x10)]
-    public string? CompareToPreviousSign
+    public override string? CompareToPreviousSign
     {
         get; set;
     }
     [DataMember, JsonProperty("등락율"), StringLength(0x10)]
-    public string? Rate
+    public override string? Rate
     {
         get; set;
     }
     [DataMember, JsonProperty("거래량"), StringLength(0x10)]
-    public string? Volume
+    public override string? Volume
     {
         get; set;
     }
     [DataMember, JsonProperty("거래대금"), StringLength(0x10)]
-    public string? TransactionAmount
+    public override string? TransactionAmount
     {
         get; set;
     }
