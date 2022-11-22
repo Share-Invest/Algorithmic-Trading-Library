@@ -18,11 +18,11 @@ public class JsonMessageEventArgs : MessageEventArgs
         {
             Models.OpenAPI.Request.OPW00004 =>
 
-                ParameterTransformer.DeserializeOPW00004(json),
+                Parameter.DeserializeOPW00004(json),
 
             Models.OpenAPI.Request.OPW00005 =>
 
-                ParameterTransformer.DeserializeOPW00005(json),
+                Parameter.DeserializeOPW00005(json),
 
             Models.OpenAPI.Request.OPTKWFID =>
 

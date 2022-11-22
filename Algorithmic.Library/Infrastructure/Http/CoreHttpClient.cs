@@ -26,11 +26,16 @@ public class CoreHttpClient : HttpClient, ICoreClient
         }
         return string.Empty;
     }
-    public Task<T?> TryGetAsync<T>(string param)
+    public CoreHttpClient(string url)
+    {
+        FirstRendering = true;
+        BaseAddress = new Uri(url);
+    }
+    protected Task<T?> TryGetAsync<T>(string param)
     {
         string path = string.Concat(Resources.KIWOOM,
                                     '/',
-                                    ParameterTransformer.TransformOutbound(param));
+                                    Parameter.TransformOutbound(param));
         if (FirstRendering)
         {
             FirstRendering = false;
@@ -38,11 +43,6 @@ public class CoreHttpClient : HttpClient, ICoreClient
             return Task.Run(() => TryGetImplementationAsync<T>(path));
         }
         return TryGetImplementationAsync<T>(path);
-    }
-    public CoreHttpClient(string url)
-    {
-        FirstRendering = true;
-        BaseAddress = new Uri(url);
     }
     async Task<T?> TryGetImplementationAsync<T>(string path)
     {
