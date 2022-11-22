@@ -1,6 +1,5 @@
 ﻿using RestSharp;
 
-using ShareInvest.Identifies;
 using ShareInvest.Properties;
 
 using System.Diagnostics;
