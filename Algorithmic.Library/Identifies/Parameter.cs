@@ -9,7 +9,7 @@ using System.Text.RegularExpressions;
 
 namespace ShareInvest.Identifies;
 
-public static class ParameterTransformer
+public static class Parameter
 {
     public static string TransformOutbound(string route)
     {
@@ -17,7 +17,21 @@ public static class ParameterTransformer
                              "([a-z])([A-Z])",
                              "$1-$2",
                              RegexOptions.CultureInvariant,
-                             TimeSpan.FromMilliseconds(0x64)).ToLowerInvariant();
+                             TimeSpan.FromMilliseconds(0x64))
+                    .ToLowerInvariant();
+    }
+    public static string TransformInbound(string? query)
+    {
+        if (string.IsNullOrEmpty(query) is false)
+        {
+            var str = Regex.Replace(query,
+                                    "-([a-z])",
+                                    o => o.Groups[1].Value.ToUpper());
+
+            return string.Concat(char.ToUpper(str[0]),
+                                 str[1..]);
+        }
+        return string.Empty;
     }
     public static AccountBook? DeserializeOPW00004(string json)
     {

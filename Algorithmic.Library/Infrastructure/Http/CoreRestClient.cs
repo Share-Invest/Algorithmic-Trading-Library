@@ -12,7 +12,7 @@ public class CoreRestClient : RestClient, ICoreClient
 {
     public async Task<object> PostAsync<T>(string route, T param) where T : class
     {
-        var transformer = ParameterTransformer.TransformOutbound(route);
+        var transformer = Identifies.Parameter.TransformOutbound(route);
 
         var request = new RestRequest($"{Resources.KIWOOM}/{transformer}", Method.POST);
 
