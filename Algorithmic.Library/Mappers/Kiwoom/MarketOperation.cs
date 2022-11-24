@@ -21,9 +21,8 @@ public class MarketOperation
     {
         if (arg?.Length == 1)
         {
-            var index = char.IsDigit(arg[0]) &&
-                        int.TryParse(arg, out int digit) ? digit :
-                                                           Convert.ToChar(arg);
+            var index = char.IsDigit(arg[0]) ? Convert.ToInt32(arg) :
+                                               Convert.ToChar(arg);
 
             if (Enum.IsDefined(typeof(EnumMarketOperation), index))
                 return (EnumMarketOperation)index;
