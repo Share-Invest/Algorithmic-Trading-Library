@@ -15,7 +15,7 @@ public enum EnumMarketOperation
     선옵_장마감전_동시호가_시작 = 's',
     선옵_장마감전_동시호가_종료 = 'e'
 }
-public class MarketOperation
+public static class MarketOperation
 {
     public static EnumMarketOperation Get(string? arg)
     {
