@@ -20,4 +20,10 @@ public class RealMessageEventArgs : MessageEventArgs
         Key = key;
         Data = data;
     }
+    public RealMessageEventArgs(string key, string data)
+    {
+        Key = key;
+        Data = data;
+        Type = string.Empty;
+    }
 }
