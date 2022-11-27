@@ -15,15 +15,14 @@ public enum EnumMarketOperation
     선옵_장마감전_동시호가_시작 = 's',
     선옵_장마감전_동시호가_종료 = 'e'
 }
-public class MarketOperation
+public static class MarketOperation
 {
     public static EnumMarketOperation Get(string? arg)
     {
         if (arg?.Length == 1)
         {
-            var index = char.IsDigit(arg[0]) &&
-                        int.TryParse(arg, out int digit) ? digit :
-                                                           Convert.ToChar(arg);
+            var index = char.IsDigit(arg[0]) ? Convert.ToInt32(arg) :
+                                               Convert.ToChar(arg);
 
             if (Enum.IsDefined(typeof(EnumMarketOperation), index))
                 return (EnumMarketOperation)index;

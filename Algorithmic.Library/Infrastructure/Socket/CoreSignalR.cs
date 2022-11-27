@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Logging;
 
 using ShareInvest.Observers;
+using ShareInvest.Observers.OpenAPI;
 using ShareInvest.Observers.Socket;
 
 using System.Diagnostics;
@@ -12,11 +13,13 @@ public class CoreSignalR : ISocketClient<MessageEventArgs>
 {
     public event EventHandler<MessageEventArgs>? Send;
 
-    public HubConnection Hub => hub;
-
+    public HubConnection Hub
+    {
+        get;
+    }
     public CoreSignalR(string url)
     {
-        hub = new HubConnectionBuilder()
+        Hub = new HubConnectionBuilder()
 
             .WithUrl(url, o =>
             {
@@ -42,22 +45,33 @@ public class CoreSignalR : ISocketClient<MessageEventArgs>
             })
             .Build();
 
-        hub.Closed += async e =>
+        OnConnection();
+    }
+    protected IDisposable On(string name)
+    {
+        return Hub.On<string, string>(name, (key, data) =>
         {
-            Send?.Invoke(this, new SignalEventArgs(hub.State));
+            Send?.Invoke(this,
+                         new RealMessageEventArgs(key, data));
+        });
+    }
+    void OnConnection()
+    {
+        Hub.Closed += async e =>
+        {
+            Send?.Invoke(this, new SignalEventArgs(Hub.State));
 #if DEBUG
             Debug.WriteLine(e?.Message);
 #endif
             await Task.CompletedTask;
         };
-        hub.Reconnecting += async e =>
+        Hub.Reconnecting += async e =>
         {
-            Send?.Invoke(this, new SignalEventArgs(hub.State));
+            Send?.Invoke(this, new SignalEventArgs(Hub.State));
 #if DEBUG
             Debug.WriteLine(e?.Message);
 #endif
             await Task.CompletedTask;
         };
     }
-    readonly HubConnection hub;
 }
