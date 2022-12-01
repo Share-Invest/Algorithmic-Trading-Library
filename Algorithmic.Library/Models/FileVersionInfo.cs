@@ -56,7 +56,7 @@ public class FileVersionInfo
     {
         get; set;
     }
-    public long Ticks
+    public long Publish
     {
         get; set;
     }
