@@ -20,8 +20,11 @@ public class CoreRestClient : RestClient, ICoreClient
         var res = await ExecuteAsync(request, cancellationTokenSource.Token);
 
         if (HttpStatusCode.OK != res.StatusCode)
+        {
+#if DEBUG
             Debug.WriteLine(res.StatusCode);
-
+#endif
+        }
         return res.Content;
     }
     public CoreRestClient() : base(Resources.URL)
