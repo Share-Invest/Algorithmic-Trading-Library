@@ -10,4 +10,8 @@ public abstract class User
     {
         get; set;
     }
+    public abstract bool IsAdministrator
+    {
+        get; set;
+    }
 }

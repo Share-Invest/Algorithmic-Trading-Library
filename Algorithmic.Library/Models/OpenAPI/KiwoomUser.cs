@@ -37,4 +37,8 @@ public class KiwoomUser : User
     {
         get; set;
     }
+    public override bool IsAdministrator
+    {
+        get; set;
+    }
 }
