@@ -1,4 +1,6 @@
-﻿using ShareInvest.Identifies;
+﻿using Newtonsoft.Json.Linq;
+
+using ShareInvest.Identifies;
 using ShareInvest.Properties;
 
 using System.Diagnostics;
@@ -9,6 +11,10 @@ namespace ShareInvest.Infrastructure.Http;
 
 public class CoreHttpClient : HttpClient, ICoreClient
 {
+    public Task<object> GetAsync(string route, JToken token)
+    {
+        throw new NotImplementedException();
+    }
     public async Task<object> PostAsync<T>(string route, T param) where T : class
     {
         var url = string.Concat(Resources.URL, Resources.KIWOOM, route);

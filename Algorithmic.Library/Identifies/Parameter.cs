@@ -5,12 +5,30 @@ using ShareInvest.Models;
 using ShareInvest.Models.OpenAPI.Response;
 using ShareInvest.Properties;
 
+using System.Text;
 using System.Text.RegularExpressions;
 
 namespace ShareInvest.Identifies;
 
 public static class Parameter
 {
+    public static string TransformQuery(JToken token,
+                                        StringBuilder query)
+    {
+        query.Append('?');
+
+        foreach (var j in token.Children<JProperty>())
+
+            if (JTokenType.Null != j.Value.Type)
+            {
+                query.Append(j.Path);
+                query.Append('=');
+                query.Append(j.Value);
+                query.Append('&');
+            }
+        return TransformOutbound(query.Remove(query.Length - 1, 1)
+                                      .ToString());
+    }
     public static string TransformOutbound(string route)
     {
         return Regex.Replace(route,
