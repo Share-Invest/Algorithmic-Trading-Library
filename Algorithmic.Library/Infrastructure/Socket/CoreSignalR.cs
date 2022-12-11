@@ -57,6 +57,9 @@ public class CoreSignalR : ISocketClient<MessageEventArgs>
     }
     void OnConnection()
     {
+        Hub.ServerTimeout = TimeSpan.FromSeconds(60);
+        Hub.HandshakeTimeout = TimeSpan.FromSeconds(30);
+
         Hub.Closed += async e =>
         {
             Send?.Invoke(this, new SignalEventArgs(Hub.State));
